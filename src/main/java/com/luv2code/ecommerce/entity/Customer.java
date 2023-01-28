@@ -8,7 +8,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Getter@Setter
+@Getter
+@Setter
 public class Customer {
 
     @Id
