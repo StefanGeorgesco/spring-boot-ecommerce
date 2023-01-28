@@ -1,9 +1,6 @@
 package com.luv2code.ecommerce.config;
 
-import com.luv2code.ecommerce.entity.Country;
-import com.luv2code.ecommerce.entity.Product;
-import com.luv2code.ecommerce.entity.ProductCategory;
-import com.luv2code.ecommerce.entity.State;
+import com.luv2code.ecommerce.entity.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.metamodel.EntityType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +23,14 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 
-        HttpMethod[] unsupportedMethods = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
+        HttpMethod[] unsupportedMethods = { HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH };
 
-        // disable HTTP methods for Product: PUT, POST, DELETE and PATCH
+        // disable unsupported HTTP methods for exposed entities
         disableHttpMethod(config, unsupportedMethods, Product.class);
-
-        // disable HTTP methods for ProductCategory: PUT, POST, DELETE and PATCH
         disableHttpMethod(config, unsupportedMethods, ProductCategory.class);
-
-        // disable HTTP methods for State: PUT, POST, DELETE and PATCH
         disableHttpMethod(config, unsupportedMethods, State.class);
-
-        // disable HTTP methods for Country: PUT, POST, DELETE and PATCH
         disableHttpMethod(config, unsupportedMethods, Country.class);
+        disableHttpMethod(config, unsupportedMethods, Order.class);
 
         // expose entity ids
         exposeIds(config);
