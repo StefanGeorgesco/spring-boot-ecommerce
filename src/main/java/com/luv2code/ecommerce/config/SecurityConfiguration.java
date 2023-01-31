@@ -24,8 +24,6 @@ public class SecurityConfiguration {
                                 "/api/states/**"
                         )
                         .permitAll()
-                        .requestMatchers("/api/order/**")
-                        .authenticated()
                         .anyRequest()
                         .authenticated())
                 .oauth2ResourceServer()
