@@ -27,6 +27,7 @@ public class SecurityConfiguration {
                         )
                         .anonymous()
                         .requestMatchers(HttpMethod.POST, "/api/checkout/purchase").anonymous()
+                        .requestMatchers(HttpMethod.POST, "/api/checkout/payment-intent").anonymous()
                         .anyRequest()
                         .authenticated())
                 .oauth2ResourceServer()
