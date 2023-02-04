@@ -22,7 +22,7 @@ public class CheckoutController {
         return checkoutService.placeOrder(purchase);
     }
 
-    @PostMapping("payment-intent")
+    @PostMapping("/payment-intent")
     public ResponseEntity<String> createPaymentIntent(@RequestBody PaymentInfo paymentInfo) throws StripeException {
         PaymentIntent paymentIntent = checkoutService.createPaymentIntent(paymentInfo);
         return ResponseEntity.ok(paymentIntent.toJson());
