@@ -1,0 +1,11 @@
+services:
+  backend:
+    image: springboot-ecommerce
+    container_name: backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://host.docker.internal:3306/full-stack-ecommerce?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=Europe/Paris
+      - ALLOWED.ORIGINS=http://localhost
+      - SERVER.PORT=8080
+      - SERVER.SSL.ENABLED=false
