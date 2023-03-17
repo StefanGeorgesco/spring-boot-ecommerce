@@ -14,20 +14,20 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        // protect endpoint /api/orders
+        // protect endpoint /orders
         http.authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(
                                 HttpMethod.GET,
-                                "/api",
-                                "/api/profile",
-                                "/api/products/**",
-                                "/api/product-category/**",
-                                "/api/countries/**",
-                                "/api/states/**"
+                                "/",
+                                "/profile",
+                                "/products/**",
+                                "/product-category/**",
+                                "/countries/**",
+                                "/states/**"
                         )
                         .anonymous()
-                        .requestMatchers(HttpMethod.POST, "/api/checkout/purchase").anonymous()
-                        .requestMatchers(HttpMethod.POST, "/api/checkout/payment-intent").anonymous()
+                        .requestMatchers(HttpMethod.POST, "/checkout/purchase").anonymous()
+                        .requestMatchers(HttpMethod.POST, "/checkout/payment-intent").anonymous()
                         .anyRequest()
                         .authenticated())
                 .oauth2ResourceServer()
